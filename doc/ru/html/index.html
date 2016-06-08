@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>MPI Worker: Описание проекта</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">MPI Worker
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li class="current"><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="namespaces.html"><span>Пространства&#160;имен</span></a></li>
+      <li><a href="annotated.html"><span>Классы</span></a></li>
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Классы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Пространства имен</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Макросы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Группы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Страницы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Описание проекта </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h3>Класс <a class="el" href="classmpiworker_1_1MPIWorker.html" title="Содержит методы, выполняющие разделение и сборку массивов в MPI-приложении. ">mpiworker::MPIWorker</a></h3>
+<p>Содержит методы-обертки с простым синтаксисом для коллективных операций <a href="https://www.open-mpi.org/">MPI</a> (Scatterv, Gatherv и других). Данные храняться в векторах <a href="http://ru.cppreference.com/w/cpp/container/vector">std::vector</a>, работа выполняется в коммуникаторе MPI::COMM_WORLD.</p>
+<p>Для выполнения коллективных операций требуется создать объект класса MPIWorker: </p>
+<div class="fragment"><div class="line"><a class="code" href="classmpiworker_1_1MPIWorker.html">mpiworker::MPIWorker</a> w;</div>
+</div><!-- fragment --><p> затем установить режим работы и общее число обрабатываемых элементов </p>
+<div class="fragment"><div class="line">w.<a class="code" href="classmpiworker_1_1MPIWorker.html#a2ff88f266efae23ec2a12a56bd0472d1">setMode</a>(0);</div>
+<div class="line">w.<a class="code" href="classmpiworker_1_1MPIWorker.html#afcce321227c6d15a5fc2145cf59cd54d">setNElems</a>(9999);</div>
+</div><!-- fragment --><p>Пример разделения элементов вектора на приблизительно равные части: </p>
+<div class="fragment"><div class="line"><span class="comment">// result for nNodes = 3</span></div>
+<div class="line"></div>
+<div class="line">  <a class="code" href="classmpiworker_1_1MPIWorker.html">mpiworker::MPIWorker</a> w;                          <span class="comment">// MPI::Init(), Get_size() and Get_rank()</span></div>
+<div class="line"></div>
+<div class="line">  <span class="keywordtype">int</span> N = 0; </div>
+<div class="line">  std::vector&lt;float&gt; x; </div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">if</span>( !w.<a class="code" href="classmpiworker_1_1MPIWorker.html#acbd3bd07d15ffa90a2c112edeecee6e0">getRankNode</a>() ) </div>
+<div class="line">  { </div>
+<div class="line">      N = 11; </div>
+<div class="line">      x.resize(N);</div>
+<div class="line">      std::iota(x.begin(),x.end(),1);              <span class="comment">// rank=0: x = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}</span></div>
+<div class="line">  }</div>
+<div class="line"></div>
+<div class="line">  w.<a class="code" href="classmpiworker_1_1MPIWorker.html#ae22bafa8bd4d6515e5b91ef95518c87d">bcast</a>&lt;<span class="keywordtype">int</span>&gt;(N,MPI::INT);                        <span class="comment">// N == 11 on all ranks</span></div>
+<div class="line">  w.<a class="code" href="classmpiworker_1_1MPIWorker.html#a2ff88f266efae23ec2a12a56bd0472d1">setMode</a>(1);                                    <span class="comment">// all nodes have equal rights</span></div>
+<div class="line">  w.<a class="code" href="classmpiworker_1_1MPIWorker.html#afcce321227c6d15a5fc2145cf59cd54d">setNElems</a>(N);                                  <span class="comment">// counts = { 3, 4, 4 }</span></div>
+<div class="line">                                                   <span class="comment">// displacement  = { 0, 3, 7 }</span></div>
+<div class="line">  <span class="keywordflow">if</span>( !w.<a class="code" href="classmpiworker_1_1MPIWorker.html#acbd3bd07d15ffa90a2c112edeecee6e0">getRankNode</a>() ) w.<a class="code" href="classmpiworker_1_1MPIWorker.html#ab9f20357773fe10fbe3bc6d92754d4e0">print</a>();</div>
+<div class="line"></div>
+<div class="line">  std::vector&lt;float&gt; xPerNode;                     <span class="comment">// vector for local portions</span></div>
+<div class="line">  w.<a class="code" href="classmpiworker_1_1MPIWorker.html#a24f713941043ab8d54574830a251995b">scatterv</a>&lt;<span class="keywordtype">float</span>&gt;(x,xPerNode,MPI::FLOAT);        <span class="comment">// rank=0: { 1, 2, 3 }</span></div>
+<div class="line">                                                   <span class="comment">// rank=1: { 4, 5, 6, 7 }</span></div>
+<div class="line">                                                   <span class="comment">// rank=2: { 8, 9, 10, 11 }</span></div>
+<div class="line">  <span class="keywordflow">for</span>( <span class="keyword">auto</span> &amp; e: xPerNode)</div>
+<div class="line">  {</div>
+<div class="line">      e += w.<a class="code" href="classmpiworker_1_1MPIWorker.html#acbd3bd07d15ffa90a2c112edeecee6e0">getRankNode</a>();                        <span class="comment">// rank=0: { 1, 2, 3 }</span></div>
+<div class="line">  }                                                <span class="comment">// rank=1: { 5, 6, 7, 8 }</span></div>
+<div class="line">                                                   <span class="comment">// rank=2: { 10, 11, 12, 13 }</span></div>
+<div class="line">  std::vector&lt;float&gt; y( N );</div>
+<div class="line">  w.<a class="code" href="classmpiworker_1_1MPIWorker.html#aff6b4d55cb55caa37c9a0cb08b3c5661">gatherv</a>( xPerNode, y, MPI::FLOAT );            <span class="comment">// rank=0: { 1, 2, 3, 5, 6, 7, 8, 10, 11, 12, 13 }</span></div>
+<div class="line">                                                   <span class="comment">// rank=1,2: { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }</span></div>
+<div class="line"></div>
+<div class="line">  w.<a class="code" href="classmpiworker_1_1MPIWorker.html#a49fda2aa379265e74f9b7504ad67ee9a">allGatherv</a>( xPerNode, y, MPI::FLOAT );         <span class="comment">// rank=0,1,2: { 1, 2, 3, 5, 6, 7, 8, 10, 11, 12, 13 }</span></div>
+</div><!-- fragment --><p>Класс <a class="el" href="classmpiworker_1_1MPIInit.html" title="Создает и удаляет коммуникатор MPI::COMM_WORLD. Реализован как Singleton Meyers. Начиная с С++11 пото...">mpiworker::MPIInit</a> и функция calculatePortions играют вспомогательную роль, но могут быть использованы независимо от <a class="el" href="classmpiworker_1_1MPIWorker.html" title="Содержит методы, выполняющие разделение и сборку массивов в MPI-приложении. ">mpiworker::MPIWorker</a>.</p>
+<h3>Класс <a class="el" href="classmpiworker_1_1MPIInit.html" title="Создает и удаляет коммуникатор MPI::COMM_WORLD. Реализован как Singleton Meyers. Начиная с С++11 пото...">mpiworker::MPIInit</a></h3>
+<p>Выполняет инициализацию и закрытие библиотеки MPI. Реализован как Singleton Meyers.</p>
+<h3>Функция <a href="group__MPIWorker.html#ga6fd8303c1b4e39a4a623756fdcbeae6f">calculatePortions</a></h3>
+<p>Выполняет формирование вспомогательных массивов для деления некоторого общего количества элементов на приблизительно равные части коллективной операцией Scatterv или для объединения массивов значений на узлах в единый массив. </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Документация по MPI Worker. Последние изменения: Ср 8 Июн 2016 18:12:00. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.6
+</small></address>
+</body>
+</html>

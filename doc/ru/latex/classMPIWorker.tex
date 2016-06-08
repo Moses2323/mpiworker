@@ -1,0 +1,244 @@
+\hypertarget{classMPIWorker}{\section{Класс M\-P\-I\-Worker}
+\label{classMPIWorker}\index{M\-P\-I\-Worker@{M\-P\-I\-Worker}}
+}
+
+
+Содержит методы, выполняющие разделение и сборку массивов в M\-P\-I-\/приложении.  
+
+
+
+
+{\ttfamily \#include $<$mpiwork.\-hpp$>$}
+
+
+
+Граф связей класса M\-P\-I\-Worker\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classMPIWorker__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMPIWorker_a28516cb1c7e14363d919523b316fe782}{M\-P\-I\-Worker} ()
+\begin{DoxyCompactList}\small\item\em Конструктор. \end{DoxyCompactList}\item 
+void \hyperlink{classMPIWorker_aaecd47e33ac7765ef53bef7a5d4a7a23}{set\-Mode} (const short \&mode)
+\begin{DoxyCompactList}\small\item\em Устанавливает режим работы узлов кластера. \end{DoxyCompactList}\item 
+void \hyperlink{classMPIWorker_af0f212025c0a57a3822487bd26dae1a3}{set\-N\-Elems} (const int \&n\-Elems)
+\begin{DoxyCompactList}\small\item\em Число элементов в разрезаемом или собираемом массиве. \end{DoxyCompactList}\item 
+int \hyperlink{classMPIWorker_a552cfd0819b82b558e102042c501c8f5}{get\-Rank\-Node} () const 
+\begin{DoxyCompactList}\small\item\em Возвращает ранг узла. \end{DoxyCompactList}\item 
+int \hyperlink{classMPIWorker_acb068493ae10f06715ceb6e00a0c09af}{get\-N\-Nodes} () const 
+\begin{DoxyCompactList}\small\item\em Возвращает число узлов. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \hyperlink{classMPIWorker_a451e1e641cd003724f73d667e784cdd5}{scatterv} (const std\-::vector$<$ T $>$ \&array, std\-::vector$<$ T $>$ \&array\-Per\-Node, M\-P\-I\-::\-Datatype M\-P\-I\-Type, bool is\-Resize=true)
+\begin{DoxyCompactList}\small\item\em Разделение элементов массива на приблизительно равные части. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \hyperlink{classMPIWorker_a32a3813263d8f44468978fddbf9f6452}{all\-Gatherv} (const std\-::vector$<$ T $>$ \&array\-Per\-Node, std\-::vector$<$ T $>$ \&array, M\-P\-I\-::\-Datatype M\-P\-I\-Type)
+\begin{DoxyCompactList}\small\item\em Сбор элементов в единые массивы на всех узлах. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \hyperlink{classMPIWorker_a319cb96fc82faf7a1111382e9fa59e25}{gatherv} (const std\-::vector$<$ T $>$ \&array\-Per\-Node, std\-::vector$<$ T $>$ \&array, M\-P\-I\-::\-Datatype M\-P\-I\-Type)
+\begin{DoxyCompactList}\small\item\em Сбор элементов в единый массив на нулевом узле. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \hyperlink{classMPIWorker_aaa4402c33f6919b07ee6900981a61b8a}{Bcast} (T \&var, M\-P\-I\-::\-Datatype M\-P\-I\-Type)
+\begin{DoxyCompactList}\small\item\em Рассылает значение скалярной переменной с нулевого узла на все остальные. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \hyperlink{classMPIWorker_a4304837a9bdf53a7d8d123b279659fbd}{Bcast} (const std\-::vector$<$ T $>$ \&array\-Part, std\-::vector$<$ T $>$ \&array\-Res, M\-P\-I\-::\-Datatype M\-P\-I\-Type, M\-P\-I\-::\-M\-P\-I\-Op)
+\begin{DoxyCompactList}\small\item\em Выполняет свертку со сбором результата на нулевом узле \end{DoxyCompactList}\item 
+void \hyperlink{classMPIWorker_ae1625b662cb13204ae8a5ad434bbc43b}{print} ()
+\begin{DoxyCompactList}\small\item\em Печать значений, хранимых в полях. \end{DoxyCompactList}\item 
+\hyperlink{classMPIWorker_a91bb9809bb89ea7d24b85273d7b551a9}{$\sim$\-M\-P\-I\-Worker} ()
+\begin{DoxyCompactList}\small\item\em Деструктор. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+Содержит методы, выполняющие разделение и сборку массивов в M\-P\-I-\/приложении. 
+
+Методы класса представляют собой обертку к коллективным M\-P\-I-\/функциям Scatterv и Allgatherv. Работа выполняется в коммуникаторе C\-O\-M\-M\-\_\-\-W\-O\-R\-L\-D. Реализованы схемы\-:
+\begin{DoxyItemize}
+\item с управляющим нулевым узлом при set\-Mode(0);
+\item все узлы выполняют вычисления при set\-Mode(1). 
+\end{DoxyItemize}
+
+\subsection{Конструктор(ы)}
+\hypertarget{classMPIWorker_a28516cb1c7e14363d919523b316fe782}{\index{M\-P\-I\-Worker@{M\-P\-I\-Worker}!M\-P\-I\-Worker@{M\-P\-I\-Worker}}
+\index{M\-P\-I\-Worker@{M\-P\-I\-Worker}!MPIWorker@{M\-P\-I\-Worker}}
+\subsubsection[{M\-P\-I\-Worker}]{\setlength{\rightskip}{0pt plus 5cm}M\-P\-I\-Worker\-::\-M\-P\-I\-Worker (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMPIWorker_a28516cb1c7e14363d919523b316fe782}
+
+
+Конструктор. 
+
+\hypertarget{classMPIWorker_a91bb9809bb89ea7d24b85273d7b551a9}{\index{M\-P\-I\-Worker@{M\-P\-I\-Worker}!$\sim$\-M\-P\-I\-Worker@{$\sim$\-M\-P\-I\-Worker}}
+\index{$\sim$\-M\-P\-I\-Worker@{$\sim$\-M\-P\-I\-Worker}!MPIWorker@{M\-P\-I\-Worker}}
+\subsubsection[{$\sim$\-M\-P\-I\-Worker}]{\setlength{\rightskip}{0pt plus 5cm}M\-P\-I\-Worker\-::$\sim$\-M\-P\-I\-Worker (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMPIWorker_a91bb9809bb89ea7d24b85273d7b551a9}
+
+
+Деструктор. 
+
+
+
+\subsection{Методы}
+\hypertarget{classMPIWorker_a32a3813263d8f44468978fddbf9f6452}{\index{M\-P\-I\-Worker@{M\-P\-I\-Worker}!all\-Gatherv@{all\-Gatherv}}
+\index{all\-Gatherv@{all\-Gatherv}!MPIWorker@{M\-P\-I\-Worker}}
+\subsubsection[{all\-Gatherv}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void M\-P\-I\-Worker\-::all\-Gatherv (
+\begin{DoxyParamCaption}
+\item[{const std\-::vector$<$ T $>$ \&}]{array\-Per\-Node, }
+\item[{std\-::vector$<$ T $>$ \&}]{array, }
+\item[{M\-P\-I\-::\-Datatype}]{M\-P\-I\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMPIWorker_a32a3813263d8f44468978fddbf9f6452}
+
+
+Сбор элементов в единые массивы на всех узлах. 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em array\-Per\-Node} & Входной массив с элементами текущего узла. \\
+\hline
+\mbox{\tt out}  & {\em array} & Итоговый массив со всеми элементами. \\
+\hline
+\mbox{\tt in}  & {\em M\-P\-I\-Type} & Тип элементов. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classMPIWorker_aaa4402c33f6919b07ee6900981a61b8a}{\index{M\-P\-I\-Worker@{M\-P\-I\-Worker}!Bcast@{Bcast}}
+\index{Bcast@{Bcast}!MPIWorker@{M\-P\-I\-Worker}}
+\subsubsection[{Bcast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void M\-P\-I\-Worker\-::\-Bcast (
+\begin{DoxyParamCaption}
+\item[{T \&}]{var, }
+\item[{M\-P\-I\-::\-Datatype}]{M\-P\-I\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMPIWorker_aaa4402c33f6919b07ee6900981a61b8a}
+
+
+Рассылает значение скалярной переменной с нулевого узла на все остальные. 
+
+\hypertarget{classMPIWorker_a4304837a9bdf53a7d8d123b279659fbd}{\index{M\-P\-I\-Worker@{M\-P\-I\-Worker}!Bcast@{Bcast}}
+\index{Bcast@{Bcast}!MPIWorker@{M\-P\-I\-Worker}}
+\subsubsection[{Bcast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void M\-P\-I\-Worker\-::\-Bcast (
+\begin{DoxyParamCaption}
+\item[{const std\-::vector$<$ T $>$ \&}]{array\-Part, }
+\item[{std\-::vector$<$ T $>$ \&}]{array\-Res, }
+\item[{M\-P\-I\-::\-Datatype}]{M\-P\-I\-Type, }
+\item[{M\-P\-I\-::\-M\-P\-I\-Op}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMPIWorker_a4304837a9bdf53a7d8d123b279659fbd}
+
+
+Выполняет свертку со сбором результата на нулевом узле 
+
+\hypertarget{classMPIWorker_a319cb96fc82faf7a1111382e9fa59e25}{\index{M\-P\-I\-Worker@{M\-P\-I\-Worker}!gatherv@{gatherv}}
+\index{gatherv@{gatherv}!MPIWorker@{M\-P\-I\-Worker}}
+\subsubsection[{gatherv}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void M\-P\-I\-Worker\-::gatherv (
+\begin{DoxyParamCaption}
+\item[{const std\-::vector$<$ T $>$ \&}]{array\-Per\-Node, }
+\item[{std\-::vector$<$ T $>$ \&}]{array, }
+\item[{M\-P\-I\-::\-Datatype}]{M\-P\-I\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMPIWorker_a319cb96fc82faf7a1111382e9fa59e25}
+
+
+Сбор элементов в единый массив на нулевом узле. 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em array\-Per\-Node} & Входной массив с элементами текущего узла. \\
+\hline
+\mbox{\tt out}  & {\em array} & Итоговый массив со всеми элементами. \\
+\hline
+\mbox{\tt in}  & {\em M\-P\-I\-Type} & Тип элементов. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classMPIWorker_acb068493ae10f06715ceb6e00a0c09af}{\index{M\-P\-I\-Worker@{M\-P\-I\-Worker}!get\-N\-Nodes@{get\-N\-Nodes}}
+\index{get\-N\-Nodes@{get\-N\-Nodes}!MPIWorker@{M\-P\-I\-Worker}}
+\subsubsection[{get\-N\-Nodes}]{\setlength{\rightskip}{0pt plus 5cm}int M\-P\-I\-Worker\-::get\-N\-Nodes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMPIWorker_acb068493ae10f06715ceb6e00a0c09af}
+
+
+Возвращает число узлов. 
+
+\hypertarget{classMPIWorker_a552cfd0819b82b558e102042c501c8f5}{\index{M\-P\-I\-Worker@{M\-P\-I\-Worker}!get\-Rank\-Node@{get\-Rank\-Node}}
+\index{get\-Rank\-Node@{get\-Rank\-Node}!MPIWorker@{M\-P\-I\-Worker}}
+\subsubsection[{get\-Rank\-Node}]{\setlength{\rightskip}{0pt plus 5cm}int M\-P\-I\-Worker\-::get\-Rank\-Node (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMPIWorker_a552cfd0819b82b558e102042c501c8f5}
+
+
+Возвращает ранг узла. 
+
+\hypertarget{classMPIWorker_ae1625b662cb13204ae8a5ad434bbc43b}{\index{M\-P\-I\-Worker@{M\-P\-I\-Worker}!print@{print}}
+\index{print@{print}!MPIWorker@{M\-P\-I\-Worker}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}void M\-P\-I\-Worker\-::print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMPIWorker_ae1625b662cb13204ae8a5ad434bbc43b}
+
+
+Печать значений, хранимых в полях. 
+
+\hypertarget{classMPIWorker_a451e1e641cd003724f73d667e784cdd5}{\index{M\-P\-I\-Worker@{M\-P\-I\-Worker}!scatterv@{scatterv}}
+\index{scatterv@{scatterv}!MPIWorker@{M\-P\-I\-Worker}}
+\subsubsection[{scatterv}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void M\-P\-I\-Worker\-::scatterv (
+\begin{DoxyParamCaption}
+\item[{const std\-::vector$<$ T $>$ \&}]{array, }
+\item[{std\-::vector$<$ T $>$ \&}]{array\-Per\-Node, }
+\item[{M\-P\-I\-::\-Datatype}]{M\-P\-I\-Type, }
+\item[{bool}]{is\-Resize = {\ttfamily true}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMPIWorker_a451e1e641cd003724f73d667e784cdd5}
+
+
+Разделение элементов массива на приблизительно равные части. 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em array} & Исходный массив со всеми элементами. \\
+\hline
+\mbox{\tt out}  & {\em array\-Per\-Node} & Выходной массив с элементами для текущего узла. \\
+\hline
+\mbox{\tt in}  & {\em M\-P\-I\-Type} & Тип элементов. \\
+\hline
+\mbox{\tt in}  & {\em is\-Resize} & Ключ для изменения размера массива. При is\-Resize==true размер вектора array\-Per\-Node изменяется методом resize. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classMPIWorker_aaecd47e33ac7765ef53bef7a5d4a7a23}{\index{M\-P\-I\-Worker@{M\-P\-I\-Worker}!set\-Mode@{set\-Mode}}
+\index{set\-Mode@{set\-Mode}!MPIWorker@{M\-P\-I\-Worker}}
+\subsubsection[{set\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}void M\-P\-I\-Worker\-::set\-Mode (
+\begin{DoxyParamCaption}
+\item[{const short \&}]{mode}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMPIWorker_aaecd47e33ac7765ef53bef7a5d4a7a23}
+
+
+Устанавливает режим работы узлов кластера. 
+
+0 -\/ управляющий нулевой узел \begin{DoxyWarning}{Предупреждения}
+В настоящее время поддерживается только схема с управляющим нулевым узлом. 
+\end{DoxyWarning}
+\hypertarget{classMPIWorker_af0f212025c0a57a3822487bd26dae1a3}{\index{M\-P\-I\-Worker@{M\-P\-I\-Worker}!set\-N\-Elems@{set\-N\-Elems}}
+\index{set\-N\-Elems@{set\-N\-Elems}!MPIWorker@{M\-P\-I\-Worker}}
+\subsubsection[{set\-N\-Elems}]{\setlength{\rightskip}{0pt plus 5cm}void M\-P\-I\-Worker\-::set\-N\-Elems (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{n\-Elems}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMPIWorker_af0f212025c0a57a3822487bd26dae1a3}
+
+
+Число элементов в разрезаемом или собираемом массиве. 
+
+
+
+Объявления и описания членов класса находятся в файле\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{mpiwork_8hpp}{mpiwork.\-hpp}\end{DoxyCompactItemize}

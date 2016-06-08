@@ -1,0 +1,66 @@
+\subsubsection*{Класс \hyperlink{classmpiworker_1_1MPIWorker}{mpiworker\-::\-M\-P\-I\-Worker}}
+
+Содержит методы-\/обертки с простым синтаксисом для коллективных операций \href{https://www.open-mpi.org/}{\tt M\-P\-I} (Scatterv, Gatherv и других). Данные храняться в векторах \href{http://ru.cppreference.com/w/cpp/container/vector}{\tt std\-::vector}, работа выполняется в коммуникаторе M\-P\-I\-::\-C\-O\-M\-M\-\_\-\-W\-O\-R\-L\-D.
+
+Для выполнения коллективных операций требуется создать объект класса M\-P\-I\-Worker\-: 
+\begin{DoxyCode}
+\hyperlink{classmpiworker_1_1MPIWorker}{mpiworker::MPIWorker} w;
+\end{DoxyCode}
+ затем установить режим работы и общее число обрабатываемых элементов 
+\begin{DoxyCode}
+w.\hyperlink{classmpiworker_1_1MPIWorker_a2ff88f266efae23ec2a12a56bd0472d1}{setMode}(0);
+w.\hyperlink{classmpiworker_1_1MPIWorker_afcce321227c6d15a5fc2145cf59cd54d}{setNElems}(9999);
+\end{DoxyCode}
+
+
+Пример разделения элементов вектора на приблизительно равные части\-: 
+\begin{DoxyCode}
+\textcolor{comment}{// result for nNodes = 3}
+
+  \hyperlink{classmpiworker_1_1MPIWorker}{mpiworker::MPIWorker} w;                          \textcolor{comment}{// MPI::Init(), Get\_size() and
+       Get\_rank()}
+
+  \textcolor{keywordtype}{int} N = 0; 
+  std::vector<float> x; 
+
+  \textcolor{keywordflow}{if}( !w.\hyperlink{classmpiworker_1_1MPIWorker_acbd3bd07d15ffa90a2c112edeecee6e0}{getRankNode}() ) 
+  \{ 
+      N = 11; 
+      x.resize(N);
+      std::iota(x.begin(),x.end(),1);              \textcolor{comment}{// rank=0: x = \{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11\}}
+  \}
+
+  w.\hyperlink{classmpiworker_1_1MPIWorker_ae22bafa8bd4d6515e5b91ef95518c87d}{bcast}<\textcolor{keywordtype}{int}>(N,MPI::INT);                        \textcolor{comment}{// N == 11 on all ranks}
+  w.\hyperlink{classmpiworker_1_1MPIWorker_a2ff88f266efae23ec2a12a56bd0472d1}{setMode}(1);                                    \textcolor{comment}{// all nodes have equal rights}
+  w.\hyperlink{classmpiworker_1_1MPIWorker_afcce321227c6d15a5fc2145cf59cd54d}{setNElems}(N);                                  \textcolor{comment}{// counts = \{ 3, 4, 4 \}}
+                                                   \textcolor{comment}{// displacement  = \{ 0, 3, 7 \}}
+  \textcolor{keywordflow}{if}( !w.\hyperlink{classmpiworker_1_1MPIWorker_acbd3bd07d15ffa90a2c112edeecee6e0}{getRankNode}() ) w.\hyperlink{classmpiworker_1_1MPIWorker_ab9f20357773fe10fbe3bc6d92754d4e0}{print}();
+
+  std::vector<float> xPerNode;                     \textcolor{comment}{// vector for local portions}
+  w.\hyperlink{classmpiworker_1_1MPIWorker_a24f713941043ab8d54574830a251995b}{scatterv}<\textcolor{keywordtype}{float}>(x,xPerNode,MPI::FLOAT);        \textcolor{comment}{// rank=0: \{ 1, 2, 3 \}}
+                                                   \textcolor{comment}{// rank=1: \{ 4, 5, 6, 7 \}}
+                                                   \textcolor{comment}{// rank=2: \{ 8, 9, 10, 11 \}}
+  \textcolor{keywordflow}{for}( \textcolor{keyword}{auto} & e: xPerNode)
+  \{
+      e += w.\hyperlink{classmpiworker_1_1MPIWorker_acbd3bd07d15ffa90a2c112edeecee6e0}{getRankNode}();                        \textcolor{comment}{// rank=0: \{ 1, 2, 3 \}}
+  \}                                                \textcolor{comment}{// rank=1: \{ 5, 6, 7, 8 \}}
+                                                   \textcolor{comment}{// rank=2: \{ 10, 11, 12, 13 \}}
+  std::vector<float> y( N );
+  w.\hyperlink{classmpiworker_1_1MPIWorker_aff6b4d55cb55caa37c9a0cb08b3c5661}{gatherv}( xPerNode, y, MPI::FLOAT );            \textcolor{comment}{// rank=0: \{ 1, 2, 3, 5, 6, 7, 8, 10, 11, 12, 13
+       \}}
+                                                   \textcolor{comment}{// rank=1,2: \{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 \}}
+
+  w.\hyperlink{classmpiworker_1_1MPIWorker_a49fda2aa379265e74f9b7504ad67ee9a}{allGatherv}( xPerNode, y, MPI::FLOAT );         \textcolor{comment}{// rank=0,1,2: \{ 1, 2, 3, 5, 6, 7, 8, 10, 11,
+       12, 13 \}}
+\end{DoxyCode}
+
+
+Класс \hyperlink{classmpiworker_1_1MPIInit}{mpiworker\-::\-M\-P\-I\-Init} и функция calculate\-Portions играют вспомогательную роль, но могут быть использованы независимо от \hyperlink{classmpiworker_1_1MPIWorker}{mpiworker\-::\-M\-P\-I\-Worker}.
+
+\subsubsection*{Класс \hyperlink{classmpiworker_1_1MPIInit}{mpiworker\-::\-M\-P\-I\-Init}}
+
+Выполняет инициализацию и закрытие библиотеки M\-P\-I. Реализован как Singleton Meyers.
+
+\subsubsection*{Функция \href{group__MPIWorker.html#ga6fd8303c1b4e39a4a623756fdcbeae6f}{\tt calculate\-Portions}}
+
+Выполняет формирование вспомогательных массивов для деления некоторого общего количества элементов на приблизительно равные части коллективной операцией Scatterv или для объединения массивов значений на узлах в единый массив. 

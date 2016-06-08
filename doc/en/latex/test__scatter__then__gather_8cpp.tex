@@ -1,0 +1,49 @@
+\hypertarget{test__scatter__then__gather_8cpp}{\section{test\-\_\-scatter\-\_\-then\-\_\-gather.\-cpp File Reference}
+\label{test__scatter__then__gather_8cpp}\index{test\-\_\-scatter\-\_\-then\-\_\-gather.\-cpp@{test\-\_\-scatter\-\_\-then\-\_\-gather.\-cpp}}
+}
+{\ttfamily \#include $<$mpi.\-h$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include \char`\"{}../include/mpiworker/mpiworker.\-hpp\char`\"{}}\\*
+{\ttfamily \#include $<$boost/test/included/unit\-\_\-test\-\_\-framework.\-hpp$>$}\\*
+Include dependency graph for test\-\_\-scatter\-\_\-then\-\_\-gather.\-cpp\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__scatter__then__gather_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{test__scatter__then__gather_8cpp_a6b2a3852db8bb19ab6909bac01859985}{B\-O\-O\-S\-T\-\_\-\-T\-E\-S\-T\-\_\-\-M\-O\-D\-U\-L\-E}~test\-\_\-scatter\-\_\-and\-\_\-gather
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{test__scatter__then__gather_8cpp_a8e719c4f477459544627877df12f3a14}{B\-O\-O\-S\-T\-\_\-\-A\-U\-T\-O\-\_\-\-T\-E\-S\-T\-\_\-\-C\-A\-S\-E} (test\-\_\-scatter\-\_\-and\-\_\-gather)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{test__scatter__then__gather_8cpp_a6b2a3852db8bb19ab6909bac01859985}{\index{test\-\_\-scatter\-\_\-then\-\_\-gather.\-cpp@{test\-\_\-scatter\-\_\-then\-\_\-gather.\-cpp}!B\-O\-O\-S\-T\-\_\-\-T\-E\-S\-T\-\_\-\-M\-O\-D\-U\-L\-E@{B\-O\-O\-S\-T\-\_\-\-T\-E\-S\-T\-\_\-\-M\-O\-D\-U\-L\-E}}
+\index{B\-O\-O\-S\-T\-\_\-\-T\-E\-S\-T\-\_\-\-M\-O\-D\-U\-L\-E@{B\-O\-O\-S\-T\-\_\-\-T\-E\-S\-T\-\_\-\-M\-O\-D\-U\-L\-E}!test_scatter_then_gather.cpp@{test\-\_\-scatter\-\_\-then\-\_\-gather.\-cpp}}
+\subsubsection[{B\-O\-O\-S\-T\-\_\-\-T\-E\-S\-T\-\_\-\-M\-O\-D\-U\-L\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\-O\-O\-S\-T\-\_\-\-T\-E\-S\-T\-\_\-\-M\-O\-D\-U\-L\-E~test\-\_\-scatter\-\_\-and\-\_\-gather}}\label{test__scatter__then__gather_8cpp_a6b2a3852db8bb19ab6909bac01859985}
+
+
+\subsection{Function Documentation}
+\hypertarget{test__scatter__then__gather_8cpp_a8e719c4f477459544627877df12f3a14}{\index{test\-\_\-scatter\-\_\-then\-\_\-gather.\-cpp@{test\-\_\-scatter\-\_\-then\-\_\-gather.\-cpp}!B\-O\-O\-S\-T\-\_\-\-A\-U\-T\-O\-\_\-\-T\-E\-S\-T\-\_\-\-C\-A\-S\-E@{B\-O\-O\-S\-T\-\_\-\-A\-U\-T\-O\-\_\-\-T\-E\-S\-T\-\_\-\-C\-A\-S\-E}}
+\index{B\-O\-O\-S\-T\-\_\-\-A\-U\-T\-O\-\_\-\-T\-E\-S\-T\-\_\-\-C\-A\-S\-E@{B\-O\-O\-S\-T\-\_\-\-A\-U\-T\-O\-\_\-\-T\-E\-S\-T\-\_\-\-C\-A\-S\-E}!test_scatter_then_gather.cpp@{test\-\_\-scatter\-\_\-then\-\_\-gather.\-cpp}}
+\subsubsection[{B\-O\-O\-S\-T\-\_\-\-A\-U\-T\-O\-\_\-\-T\-E\-S\-T\-\_\-\-C\-A\-S\-E}]{\setlength{\rightskip}{0pt plus 5cm}B\-O\-O\-S\-T\-\_\-\-A\-U\-T\-O\-\_\-\-T\-E\-S\-T\-\_\-\-C\-A\-S\-E (
+\begin{DoxyParamCaption}
+\item[{test\-\_\-scatter\-\_\-and\-\_\-gather}]{}
+\end{DoxyParamCaption}
+)}}\label{test__scatter__then__gather_8cpp_a8e719c4f477459544627877df12f3a14}
+Выполняется тестирование операторов scattrv и gatherv. Для сборки только этого теста выполните команду
+\begin{DoxyCode}
+make test\_scatter\_then\_gather 
+\end{DoxyCode}
+ и запустите его на исполнение, например
+\begin{DoxyCode}
+mpirun -np 2 ./test\_scatter\_then\_gather 
+\end{DoxyCode}
+ 

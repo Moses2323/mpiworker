@@ -1,0 +1,74 @@
+\hypertarget{classMPIInit}{\section{Класс M\-P\-I\-Init}
+\label{classMPIInit}\index{M\-P\-I\-Init@{M\-P\-I\-Init}}
+}
+
+
+Создает и удаляет коммуникатор M\-P\-I\-::\-C\-O\-M\-M\-\_\-\-W\-O\-R\-L\-D. Реализован как Singleton Meyers. Начиная с С++11 потокобезобасен \mbox{[}I\-S\-O N3337, 6.\-7.\-4\mbox{]}.  
+
+
+
+
+{\ttfamily \#include $<$mpiinit.\-h$>$}
+
+
+
+Граф связей класса M\-P\-I\-Init\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classMPIInit__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classMPIInit_ab84a17bc15db203a84e91809402b3de7}{get\-Rank\-Node} () const 
+\begin{DoxyCompactList}\small\item\em Возвращает ранг узла. \end{DoxyCompactList}\item 
+int \hyperlink{classMPIInit_a2fcb15c25a142749bfdc475925543e9c}{get\-N\-Nodes} () const 
+\begin{DoxyCompactList}\small\item\em Возвращает число узлов. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classMPIInit}{M\-P\-I\-Init} \& \hyperlink{classMPIInit_a2204234e6693aa9ab2d1447b3ab8eeda}{instance} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+Создает и удаляет коммуникатор M\-P\-I\-::\-C\-O\-M\-M\-\_\-\-W\-O\-R\-L\-D. Реализован как Singleton Meyers. Начиная с С++11 потокобезобасен \mbox{[}I\-S\-O N3337, 6.\-7.\-4\mbox{]}. 
+
+\subsection{Методы}
+\hypertarget{classMPIInit_a2fcb15c25a142749bfdc475925543e9c}{\index{M\-P\-I\-Init@{M\-P\-I\-Init}!get\-N\-Nodes@{get\-N\-Nodes}}
+\index{get\-N\-Nodes@{get\-N\-Nodes}!MPIInit@{M\-P\-I\-Init}}
+\subsubsection[{get\-N\-Nodes}]{\setlength{\rightskip}{0pt plus 5cm}int M\-P\-I\-Init\-::get\-N\-Nodes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classMPIInit_a2fcb15c25a142749bfdc475925543e9c}
+
+
+Возвращает число узлов. 
+
+\hypertarget{classMPIInit_ab84a17bc15db203a84e91809402b3de7}{\index{M\-P\-I\-Init@{M\-P\-I\-Init}!get\-Rank\-Node@{get\-Rank\-Node}}
+\index{get\-Rank\-Node@{get\-Rank\-Node}!MPIInit@{M\-P\-I\-Init}}
+\subsubsection[{get\-Rank\-Node}]{\setlength{\rightskip}{0pt plus 5cm}int M\-P\-I\-Init\-::get\-Rank\-Node (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classMPIInit_ab84a17bc15db203a84e91809402b3de7}
+
+
+Возвращает ранг узла. 
+
+\hypertarget{classMPIInit_a2204234e6693aa9ab2d1447b3ab8eeda}{\index{M\-P\-I\-Init@{M\-P\-I\-Init}!instance@{instance}}
+\index{instance@{instance}!MPIInit@{M\-P\-I\-Init}}
+\subsubsection[{instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf M\-P\-I\-Init} \& M\-P\-I\-Init\-::instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classMPIInit_a2204234e6693aa9ab2d1447b3ab8eeda}
+
+
+Объявления и описания членов классов находятся в файлах\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{mpiinit_8h}{mpiinit.\-h}\item 
+\hyperlink{mpiinit_8cpp}{mpiinit.\-cpp}\end{DoxyCompactItemize}

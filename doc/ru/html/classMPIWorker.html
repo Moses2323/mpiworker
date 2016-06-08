@@ -1,0 +1,604 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>MPI Worker: Класс MPIWorker</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">MPI Worker
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Классы</span></a></li>
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Классы</span></a></li>
+      <li><a href="classes.html"><span>Алфавитный&#160;указатель&#160;классов</span></a></li>
+      <li><a href="functions.html"><span>Члены&#160;классов</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Классы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Группы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Страницы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="classMPIWorker-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс MPIWorker<div class="ingroups"><a class="el" href="group__MPIWorker.html">MPIWorker</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Содержит методы, выполняющие разделение и сборку массивов в MPI-приложении.  
+ <a href="classMPIWorker.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="mpiwork_8hpp_source.html">mpiwork.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Граф связей класса MPIWorker:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMPIWorker__coll__graph.png" border="0" usemap="#MPIWorker_coll__map" alt="Collaboration graph"/></div>
+<map name="MPIWorker_coll__map" id="MPIWorker_coll__map">
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a28516cb1c7e14363d919523b316fe782"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPIWorker.html#a28516cb1c7e14363d919523b316fe782">MPIWorker</a> ()</td></tr>
+<tr class="memdesc:a28516cb1c7e14363d919523b316fe782"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конструктор.  <a href="#a28516cb1c7e14363d919523b316fe782">Подробнее...</a><br/></td></tr>
+<tr class="separator:a28516cb1c7e14363d919523b316fe782"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaecd47e33ac7765ef53bef7a5d4a7a23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPIWorker.html#aaecd47e33ac7765ef53bef7a5d4a7a23">setMode</a> (const short &amp;mode)</td></tr>
+<tr class="memdesc:aaecd47e33ac7765ef53bef7a5d4a7a23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает режим работы узлов кластера.  <a href="#aaecd47e33ac7765ef53bef7a5d4a7a23">Подробнее...</a><br/></td></tr>
+<tr class="separator:aaecd47e33ac7765ef53bef7a5d4a7a23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0f212025c0a57a3822487bd26dae1a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPIWorker.html#af0f212025c0a57a3822487bd26dae1a3">setNElems</a> (const int &amp;nElems)</td></tr>
+<tr class="memdesc:af0f212025c0a57a3822487bd26dae1a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Число элементов в разрезаемом или собираемом массиве.  <a href="#af0f212025c0a57a3822487bd26dae1a3">Подробнее...</a><br/></td></tr>
+<tr class="separator:af0f212025c0a57a3822487bd26dae1a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a552cfd0819b82b558e102042c501c8f5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPIWorker.html#a552cfd0819b82b558e102042c501c8f5">getRankNode</a> () const </td></tr>
+<tr class="memdesc:a552cfd0819b82b558e102042c501c8f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает ранг узла.  <a href="#a552cfd0819b82b558e102042c501c8f5">Подробнее...</a><br/></td></tr>
+<tr class="separator:a552cfd0819b82b558e102042c501c8f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb068493ae10f06715ceb6e00a0c09af"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPIWorker.html#acb068493ae10f06715ceb6e00a0c09af">getNNodes</a> () const </td></tr>
+<tr class="memdesc:acb068493ae10f06715ceb6e00a0c09af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает число узлов.  <a href="#acb068493ae10f06715ceb6e00a0c09af">Подробнее...</a><br/></td></tr>
+<tr class="separator:acb068493ae10f06715ceb6e00a0c09af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a451e1e641cd003724f73d667e784cdd5"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a451e1e641cd003724f73d667e784cdd5"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classMPIWorker.html#a451e1e641cd003724f73d667e784cdd5">scatterv</a> (const std::vector&lt; T &gt; &amp;array, std::vector&lt; T &gt; &amp;arrayPerNode, MPI::Datatype MPIType, bool isResize=true)</td></tr>
+<tr class="memdesc:a451e1e641cd003724f73d667e784cdd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Разделение элементов массива на приблизительно равные части.  <a href="#a451e1e641cd003724f73d667e784cdd5">Подробнее...</a><br/></td></tr>
+<tr class="separator:a451e1e641cd003724f73d667e784cdd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32a3813263d8f44468978fddbf9f6452"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a32a3813263d8f44468978fddbf9f6452"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classMPIWorker.html#a32a3813263d8f44468978fddbf9f6452">allGatherv</a> (const std::vector&lt; T &gt; &amp;arrayPerNode, std::vector&lt; T &gt; &amp;array, MPI::Datatype MPIType)</td></tr>
+<tr class="memdesc:a32a3813263d8f44468978fddbf9f6452"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сбор элементов в единые массивы на всех узлах.  <a href="#a32a3813263d8f44468978fddbf9f6452">Подробнее...</a><br/></td></tr>
+<tr class="separator:a32a3813263d8f44468978fddbf9f6452"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a319cb96fc82faf7a1111382e9fa59e25"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a319cb96fc82faf7a1111382e9fa59e25"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classMPIWorker.html#a319cb96fc82faf7a1111382e9fa59e25">gatherv</a> (const std::vector&lt; T &gt; &amp;arrayPerNode, std::vector&lt; T &gt; &amp;array, MPI::Datatype MPIType)</td></tr>
+<tr class="memdesc:a319cb96fc82faf7a1111382e9fa59e25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сбор элементов в единый массив на нулевом узле.  <a href="#a319cb96fc82faf7a1111382e9fa59e25">Подробнее...</a><br/></td></tr>
+<tr class="separator:a319cb96fc82faf7a1111382e9fa59e25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa4402c33f6919b07ee6900981a61b8a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aaa4402c33f6919b07ee6900981a61b8a"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classMPIWorker.html#aaa4402c33f6919b07ee6900981a61b8a">Bcast</a> (T &amp;var, MPI::Datatype MPIType)</td></tr>
+<tr class="memdesc:aaa4402c33f6919b07ee6900981a61b8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Рассылает значение скалярной переменной с нулевого узла на все остальные.  <a href="#aaa4402c33f6919b07ee6900981a61b8a">Подробнее...</a><br/></td></tr>
+<tr class="separator:aaa4402c33f6919b07ee6900981a61b8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4304837a9bdf53a7d8d123b279659fbd"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a4304837a9bdf53a7d8d123b279659fbd"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classMPIWorker.html#a4304837a9bdf53a7d8d123b279659fbd">Bcast</a> (const std::vector&lt; T &gt; &amp;arrayPart, std::vector&lt; T &gt; &amp;arrayRes, MPI::Datatype MPIType, MPI::MPIOp)</td></tr>
+<tr class="memdesc:a4304837a9bdf53a7d8d123b279659fbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выполняет свертку со сбором результата на нулевом узле  <a href="#a4304837a9bdf53a7d8d123b279659fbd">Подробнее...</a><br/></td></tr>
+<tr class="separator:a4304837a9bdf53a7d8d123b279659fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1625b662cb13204ae8a5ad434bbc43b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPIWorker.html#ae1625b662cb13204ae8a5ad434bbc43b">print</a> ()</td></tr>
+<tr class="memdesc:ae1625b662cb13204ae8a5ad434bbc43b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Печать значений, хранимых в полях.  <a href="#ae1625b662cb13204ae8a5ad434bbc43b">Подробнее...</a><br/></td></tr>
+<tr class="separator:ae1625b662cb13204ae8a5ad434bbc43b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91bb9809bb89ea7d24b85273d7b551a9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPIWorker.html#a91bb9809bb89ea7d24b85273d7b551a9">~MPIWorker</a> ()</td></tr>
+<tr class="memdesc:a91bb9809bb89ea7d24b85273d7b551a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Деструктор.  <a href="#a91bb9809bb89ea7d24b85273d7b551a9">Подробнее...</a><br/></td></tr>
+<tr class="separator:a91bb9809bb89ea7d24b85273d7b551a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Содержит методы, выполняющие разделение и сборку массивов в MPI-приложении. </p>
+<p>Методы класса представляют собой обертку к коллективным MPI-функциям Scatterv и Allgatherv. Работа выполняется в коммуникаторе COMM_WORLD. Реализованы схемы:</p>
+<ul>
+<li>с управляющим нулевым узлом при setMode(0);</li>
+<li>все узлы выполняют вычисления при setMode(1). </li>
+</ul>
+</div><h2 class="groupheader">Конструктор(ы)</h2>
+<a class="anchor" id="a28516cb1c7e14363d919523b316fe782"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MPIWorker::MPIWorker </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Конструктор. </p>
+
+</div>
+</div>
+<a class="anchor" id="a91bb9809bb89ea7d24b85273d7b551a9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MPIWorker::~MPIWorker </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Деструктор. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a class="anchor" id="a32a3813263d8f44468978fddbf9f6452"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MPIWorker::allGatherv </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>arrayPerNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">MPI::Datatype&#160;</td>
+          <td class="paramname"><em>MPIType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Сбор элементов в единые массивы на всех узлах. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">arrayPerNode</td><td>Входной массив с элементами текущего узла. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">array</td><td>Итоговый массив со всеми элементами. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">MPIType</td><td>Тип элементов. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aaa4402c33f6919b07ee6900981a61b8a"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MPIWorker::Bcast </td>
+          <td>(</td>
+          <td class="paramtype">T &amp;&#160;</td>
+          <td class="paramname"><em>var</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">MPI::Datatype&#160;</td>
+          <td class="paramname"><em>MPIType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Рассылает значение скалярной переменной с нулевого узла на все остальные. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4304837a9bdf53a7d8d123b279659fbd"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MPIWorker::Bcast </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>arrayPart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>arrayRes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">MPI::Datatype&#160;</td>
+          <td class="paramname"><em>MPIType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">MPI::MPIOp&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Выполняет свертку со сбором результата на нулевом узле </p>
+
+</div>
+</div>
+<a class="anchor" id="a319cb96fc82faf7a1111382e9fa59e25"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MPIWorker::gatherv </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>arrayPerNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">MPI::Datatype&#160;</td>
+          <td class="paramname"><em>MPIType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Сбор элементов в единый массив на нулевом узле. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">arrayPerNode</td><td>Входной массив с элементами текущего узла. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">array</td><td>Итоговый массив со всеми элементами. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">MPIType</td><td>Тип элементов. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="acb068493ae10f06715ceb6e00a0c09af"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MPIWorker::getNNodes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает число узлов. </p>
+
+</div>
+</div>
+<a class="anchor" id="a552cfd0819b82b558e102042c501c8f5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MPIWorker::getRankNode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает ранг узла. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae1625b662cb13204ae8a5ad434bbc43b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MPIWorker::print </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Печать значений, хранимых в полях. </p>
+
+</div>
+</div>
+<a class="anchor" id="a451e1e641cd003724f73d667e784cdd5"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MPIWorker::scatterv </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>arrayPerNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">MPI::Datatype&#160;</td>
+          <td class="paramname"><em>MPIType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isResize</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Разделение элементов массива на приблизительно равные части. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">array</td><td>Исходный массив со всеми элементами. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">arrayPerNode</td><td>Выходной массив с элементами для текущего узла. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">MPIType</td><td>Тип элементов. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">isResize</td><td>Ключ для изменения размера массива. При isResize==true размер вектора arrayPerNode изменяется методом resize. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aaecd47e33ac7765ef53bef7a5d4a7a23"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MPIWorker::setMode </td>
+          <td>(</td>
+          <td class="paramtype">const short &amp;&#160;</td>
+          <td class="paramname"><em>mode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает режим работы узлов кластера. </p>
+<p>0 - управляющий нулевой узел </p>
+<dl class="section warning"><dt>Предупреждения</dt><dd>В настоящее время поддерживается только схема с управляющим нулевым узлом. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af0f212025c0a57a3822487bd26dae1a3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MPIWorker::setNElems </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>nElems</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Число элементов в разрезаемом или собираемом массиве. </p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов класса находятся в файле:<ul>
+<li><a class="el" href="mpiwork_8hpp_source.html">mpiwork.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Документация по MPI Worker. Последние изменения: Пн 6 Июн 2016 17:10:35. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.6
+</small></address>
+</body>
+</html>

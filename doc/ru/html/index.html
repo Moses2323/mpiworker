@@ -94,6 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
 <div class="line">w.<a class="code" href="classmpiworker_1_1MPIWorker.html#afcce321227c6d15a5fc2145cf59cd54d">setNElems</a>(9999);</div>
 </div><!-- fragment --><p>Пример разделения элементов вектора на приблизительно равные части: </p>
 <div class="fragment"><div class="line"><span class="comment">// result for nNodes = 3</span></div>
+<div class="line">                                                   <span class="comment">// that is mpirun -np 3 ./example_scatter_then_gather</span></div>
 <div class="line"></div>
 <div class="line">  <a class="code" href="classmpiworker_1_1MPIWorker.html">mpiworker::MPIWorker</a> w;                          <span class="comment">// MPI::Init(), Get_size() and Get_rank()</span></div>
 <div class="line"></div>
@@ -129,13 +130,46 @@ var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
 <div class="line">  w.<a class="code" href="classmpiworker_1_1MPIWorker.html#a49fda2aa379265e74f9b7504ad67ee9a">allGatherv</a>( xPerNode, y, MPI::FLOAT );         <span class="comment">// rank=0,1,2: { 1, 2, 3, 5, 6, 7, 8, 10, 11, 12, 13 }</span></div>
 </div><!-- fragment --><p>Класс <a class="el" href="classmpiworker_1_1MPIInit.html" title="Создает и удаляет коммуникатор MPI::COMM_WORLD. Реализован как Singleton Meyers. Начиная с С++11 пото...">mpiworker::MPIInit</a> и функция calculatePortions играют вспомогательную роль, но могут быть использованы независимо от <a class="el" href="classmpiworker_1_1MPIWorker.html" title="Содержит методы, выполняющие разделение и сборку массивов в MPI-приложении. ">mpiworker::MPIWorker</a>.</p>
 <h3>Класс <a class="el" href="classmpiworker_1_1MPIInit.html" title="Создает и удаляет коммуникатор MPI::COMM_WORLD. Реализован как Singleton Meyers. Начиная с С++11 пото...">mpiworker::MPIInit</a></h3>
-<p>Выполняет инициализацию и закрытие библиотеки MPI. Реализован как Singleton Meyers.</p>
-<h3>Функция <a href="group__MPIWorker.html#ga6fd8303c1b4e39a4a623756fdcbeae6f">calculatePortions</a></h3>
+<p>Выполняет инициализацию и закрытие библиотеки MPI. Реализован как Singleton Meyers. Благодаря этому можно организовывать и хранить произвольное число схем разбиения массивов в программе: </p>
+<div class="fragment"><div class="line">                                                <span class="comment">// mpirun -np 3 ./example_two_mpiworkers</span></div>
+<div class="line">std::vector&lt;float&gt; x1, x1PerNode,</div>
+<div class="line">                   x2, x2PerNode;</div>
+<div class="line"><span class="keywordtype">int</span> N1, N2;</div>
+<div class="line"></div>
+<div class="line"><a class="code" href="classmpiworker_1_1MPIWorker.html">mpiworker::MPIWorker</a> w1;                </div>
+<div class="line"></div>
+<div class="line"><a class="code" href="classmpiworker_1_1MPIWorker.html">mpiworker::MPIWorker</a> w2;</div>
+<div class="line"></div>
+<div class="line"><span class="keywordflow">if</span>( !w1.<a class="code" href="classmpiworker_1_1MPIWorker.html#acbd3bd07d15ffa90a2c112edeecee6e0">getRankNode</a>() ) </div>
+<div class="line">{</div>
+<div class="line">    x1 = { 1, 2, 3, 4, 5 }; </div>
+<div class="line">    N1 = x1.size();</div>
+<div class="line">    x2 = { 6, 7, 8, 9, 10, 11, 12};</div>
+<div class="line">    N2 = x2.size();</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"></div>
+<div class="line">w1.<a class="code" href="classmpiworker_1_1MPIWorker.html#ae22bafa8bd4d6515e5b91ef95518c87d">bcast</a>&lt;<span class="keywordtype">int</span>&gt;(N1,MPI::INT);</div>
+<div class="line">w1.<a class="code" href="classmpiworker_1_1MPIWorker.html#ae22bafa8bd4d6515e5b91ef95518c87d">bcast</a>&lt;<span class="keywordtype">int</span>&gt;(N2,MPI::INT);</div>
+<div class="line"></div>
+<div class="line">w1.<a class="code" href="classmpiworker_1_1MPIWorker.html#a2ff88f266efae23ec2a12a56bd0472d1">setMode</a>(0);                                  <span class="comment">// counts = { 0, 2, 3 }</span></div>
+<div class="line">w1.<a class="code" href="classmpiworker_1_1MPIWorker.html#afcce321227c6d15a5fc2145cf59cd54d">setNElems</a>(N1);                               <span class="comment">// displs = { 0, 0, 2 }</span></div>
+<div class="line"></div>
+<div class="line">w2.<a class="code" href="classmpiworker_1_1MPIWorker.html#a2ff88f266efae23ec2a12a56bd0472d1">setMode</a>(0);                                  <span class="comment">// counts = { 0, 3, 4 }</span></div>
+<div class="line">w2.<a class="code" href="classmpiworker_1_1MPIWorker.html#afcce321227c6d15a5fc2145cf59cd54d">setNElems</a>(N2);                               <span class="comment">// displs = { 0, 0, 3 }</span></div>
+<div class="line"></div>
+<div class="line">w1.<a class="code" href="classmpiworker_1_1MPIWorker.html#a24f713941043ab8d54574830a251995b">scatterv</a>&lt;<span class="keywordtype">float</span>&gt;(x1,x1PerNode,MPI::FLOAT);    <span class="comment">// rank=0: {}</span></div>
+<div class="line">                                                <span class="comment">// rank=1: { 1, 2 }</span></div>
+<div class="line">                                                <span class="comment">// rank=2: { 3, 4, 5 }</span></div>
+<div class="line">w2.<a class="code" href="classmpiworker_1_1MPIWorker.html#a24f713941043ab8d54574830a251995b">scatterv</a>&lt;<span class="keywordtype">float</span>&gt;(x2,x2PerNode,MPI::FLOAT);    <span class="comment">// rank=0: {}</span></div>
+<div class="line">                                                <span class="comment">// rank=1: { 6, 7, 8 }</span></div>
+<div class="line">                                                <span class="comment">// rank=2: { 9, 10, 11, 12 }</span></div>
+</div><!-- fragment --><h3>Функция <a href="group__MPIWorker.html#ga6fd8303c1b4e39a4a623756fdcbeae6f">calculatePortions</a></h3>
 <p>Выполняет формирование вспомогательных массивов для деления некоторого общего количества элементов на приблизительно равные части коллективной операцией Scatterv или для объединения массивов значений на узлах в единый массив. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Документация по MPI Worker. Последние изменения: Чт 9 Июн 2016 14:59:55. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+Документация по MPI Worker. Последние изменения: Чт 9 Июн 2016 15:06:30. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

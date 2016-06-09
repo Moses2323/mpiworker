@@ -24,6 +24,7 @@
 *
 * Пример разделения элементов вектора на приблизительно равные части:
 * \code                                               // result for nNodes = 3
+*                                                     // that is mpirun -np 3 ./example_scatter_then_gather
 *
 *    mpiworker::MPIWorker w;                          // MPI::Init(), Get_size() and Get_rank()
 *
@@ -65,6 +66,42 @@
 * ### Класс mpiworker::MPIInit
 * 
 * Выполняет инициализацию и закрытие библиотеки MPI. Реализован как Singleton Meyers. 
+* Благодаря этому можно организовывать и хранить произвольное число схем разбиения массивов в программе:
+* \code
+*                                                    // mpirun -np 3 ./example_two_mpiworkers
+*    std::vector<float> x1, x1PerNode,
+*                       x2, x2PerNode;
+*    int N1, N2;
+*
+*    mpiworker::MPIWorker w1;                
+*
+*    mpiworker::MPIWorker w2;
+*
+*    if( !w1.getRankNode() ) 
+*    {
+*        x1 = { 1, 2, 3, 4, 5 }; 
+*        N1 = x1.size();
+*        x2 = { 6, 7, 8, 9, 10, 11, 12};
+*        N2 = x2.size();
+*    }
+*
+*
+*    w1.bcast<int>(N1,MPI::INT);
+*    w1.bcast<int>(N2,MPI::INT);
+*
+*    w1.setMode(0);                                  // counts = { 0, 2, 3 }
+*    w1.setNElems(N1);                               // displs = { 0, 0, 2 }
+*
+*    w2.setMode(0);                                  // counts = { 0, 3, 4 }
+*    w2.setNElems(N2);                               // displs = { 0, 0, 3 }
+*
+*    w1.scatterv<float>(x1,x1PerNode,MPI::FLOAT);    // rank=0: {}
+*                                                    // rank=1: { 1, 2 }
+*                                                    // rank=2: { 3, 4, 5 }
+*    w2.scatterv<float>(x2,x2PerNode,MPI::FLOAT);    // rank=0: {}
+*                                                    // rank=1: { 6, 7, 8 }
+*                                                    // rank=2: { 9, 10, 11, 12 }
+* \endcode
 *
 * ### Функция [calculatePortions](group__MPIWorker.html#ga6fd8303c1b4e39a4a623756fdcbeae6f) 
 *

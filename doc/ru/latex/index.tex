@@ -100,4 +100,17 @@ w2.\hyperlink{classmpiworker_1_1MPIWorker_a24f713941043ab8d54574830a251995b}{sca
 
 \subsubsection*{Функция \href{group__MPIWorker.html#ga6fd8303c1b4e39a4a623756fdcbeae6f}{\tt calculate\-Portions}}
 
-Выполняет формирование вспомогательных массивов для деления некоторого общего количества элементов на приблизительно равные части коллективной операцией Scatterv или для объединения массивов значений на узлах в единый массив. 
+Выполняет формирование вспомогательных массивов для деления некоторого общего количества элементов на приблизительно равные части коллективной операцией Scatterv или для объединения массивов значений на узлах в единый массив.
+
+\subsubsection*{Доступные методы-\/обертки}
+
+\begin{TabularC}{2}
+\hline
+\rowcolor{lightgray}\PBS\centering {\bf Метод M\-P\-I\-Worker }&\PBS\centering {\bf Операция коммуникатора M\-P\-I\-::\-C\-O\-M\-M\-\_\-\-W\-O\-R\-L\-D  }\\\cline{1-2}
+\PBS\centering scatterv &\PBS\centering Scatterv \\\cline{1-2}
+\PBS\centering all\-Gatherv &\PBS\centering Allgatherv \\\cline{1-2}
+\PBS\centering gatherv &\PBS\centering Gatherv \\\cline{1-2}
+\PBS\centering bcast &\PBS\centering Bcast \\\cline{1-2}
+\PBS\centering reduce &\PBS\centering Reduce \\\cline{1-2}
+\PBS\centering all\-Reduce &\PBS\centering Allreduce \\\cline{1-2}
+\end{TabularC}

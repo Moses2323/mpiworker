@@ -165,11 +165,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
 <div class="line">                                                <span class="comment">// rank=1: { 6, 7, 8 }</span></div>
 <div class="line">                                                <span class="comment">// rank=2: { 9, 10, 11, 12 }</span></div>
 </div><!-- fragment --><h3>Функция <a href="group__MPIWorker.html#ga6fd8303c1b4e39a4a623756fdcbeae6f">calculatePortions</a></h3>
-<p>Выполняет формирование вспомогательных массивов для деления некоторого общего количества элементов на приблизительно равные части коллективной операцией Scatterv или для объединения массивов значений на узлах в единый массив. </p>
+<p>Выполняет формирование вспомогательных массивов для деления некоторого общего количества элементов на приблизительно равные части коллективной операцией Scatterv или для объединения массивов значений на узлах в единый массив.</p>
+<h3>Доступные методы-обертки</h3>
+<table class="doxtable">
+<tr>
+<th align="center">Метод MPIWorker </th><th align="center">Операция коммуникатора MPI::COMM_WORLD  </th></tr>
+<tr>
+<td align="center">scatterv </td><td align="center">Scatterv </td></tr>
+<tr>
+<td align="center">allGatherv </td><td align="center">Allgatherv </td></tr>
+<tr>
+<td align="center">gatherv </td><td align="center">Gatherv </td></tr>
+<tr>
+<td align="center">bcast </td><td align="center">Bcast </td></tr>
+<tr>
+<td align="center">reduce </td><td align="center">Reduce </td></tr>
+<tr>
+<td align="center">allReduce </td><td align="center">Allreduce </td></tr>
+</table>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Документация по MPI Worker. Последние изменения: Чт 9 Июн 2016 15:06:30. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+Документация по MPI Worker. Последние изменения: Пт 10 Июн 2016 10:03:59. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

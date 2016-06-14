@@ -328,7 +328,7 @@ namespace mpiworker
             ( 
                 arrayPart.data(), 
                 arrayRes.data(), 
-                arrayRes.size(), 
+                arrayPart.size(), 
                 MPIType, 
                 MPIOp, 
                 0 

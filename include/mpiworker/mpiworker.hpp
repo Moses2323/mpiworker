@@ -254,11 +254,11 @@ namespace mpiworker
         int getNNodes() const { return nNodes_; }
     
     
-        //! \~russian Разделение элементов массива на приблизительно равные части. \details \~russian \param[in] array Исходный массив со всеми элементами. \param[out] arrayPerNode Выходной массив с элементами для текущего узла. \param[in] MPIType Тип элементов. \param[in] isResize Ключ для изменения размера массива. При isResize==true размер вектора arrayPerNode изменяется методом resize.
+        //! \~russian Разделение элементов массива на приблизительно равные части. \details \~russian \param[in] array Исходный массив со всеми элементами. \param[out] arrayPerNode Выходной массив с элементами для текущего узла. \param[in] MPIType Тип элементов. 
         template <typename T>
-        void scatterv( const std::vector<T> & array, std::vector<T> & arrayPerNode,  MPI::Datatype MPIType, bool isResize = true ) 
+        void scatterv( const std::vector<T> & array, std::vector<T> & arrayPerNode,  MPI::Datatype MPIType ) 
         {
-            if( isResize ) arrayPerNode.resize(nElemsPerNode_);
+            if( arrayPerNode.size() != nElemsPerNode_ ) arrayPerNode.resize( nElemsPerNode_ );
     
             MPI::COMM_WORLD.Scatterv
             (
@@ -279,6 +279,8 @@ namespace mpiworker
         template <typename T>
         void allGatherv( const std::vector<T> & arrayPerNode, std::vector<T> & array,  MPI::Datatype MPIType )
         {
+            if( array.size() != nElems_ ) array.resize( nElems_ );
+
             MPI::COMM_WORLD.Allgatherv
             (
                 arrayPerNode.data(),
@@ -296,6 +298,8 @@ namespace mpiworker
         template <typename T>
         void gatherv( const std::vector<T> & arrayPerNode, std::vector<T> & array,  MPI::Datatype MPIType )
         {
+            if( array.size() != nElems_ && !rankNode_ ) array.resize( nElems_ );
+
             MPI::COMM_WORLD.Gatherv
             (
                 arrayPerNode.data(),
@@ -318,6 +322,8 @@ namespace mpiworker
         //! \~russian Выполняет редукцию со сбором результата на нулевом узле
         template <typename T>void reduce( const std::vector<T> & arrayPart, std::vector<T> & arrayRes, MPI::Datatype MPIType, MPI::Op MPIOp )
         {
+            if( arrayRes.size() != nElems_ && !rankNode_ ) arrayRes.resize( nElems_ );
+
             MPI::COMM_WORLD.Reduce
             ( 
                 arrayPart.data(), 
@@ -332,6 +338,8 @@ namespace mpiworker
         //! \~russian Выполняет редукцию с сохранением результата на всех узлах
         template <typename T>void allReduce( const std::vector<T> & arrayPart, std::vector<T> & arrayRes, MPI::Datatype MPIType, MPI::Op MPIOp )
         {
+            if( arrayRes.size() != nElems_ ) arrayRes.resize( nElems_ );
+
             MPI::COMM_WORLD.Allreduce
             ( 
                 arrayPart.data(), 

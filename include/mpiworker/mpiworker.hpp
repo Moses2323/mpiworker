@@ -159,61 +159,44 @@ namespace mpiworker
     };
     
     
-    /*! \brief \~russian Содержит методы, выполняющие разделение и сборку массивов в MPI-приложении. 
+    /*! \brief \~russian Содержит методы, выполняющие разделение и сборку массивов в MPI-приложении.
      *
-     * \~russian Методы класса представляют собой обертку к коллективным MPI-функциям Scatterv  и Allgatherv. Работа выполняется в коммуникаторе COMM_WORLD. 
+     * \~russian Прежде всего представляет  собой обертку к коллективным MPI-функциям типа Scatterv и Gatherv. Работа выполняется в коммуникаторе COMM_WORLD. 
      * Реализованы схемы:  
      * - с управляющим нулевым узлом при setMode(0); 
      * - все узлы выполняют вычисления при setMode(1).
+     *
+     *   \~russian Предлагает упрощенный синтаксис вызова некоторых коллективных операций из стандарта MPI.
      */
     class MPIWorker
     {
         //! \~russian Ссылка на 
         MPIInit& comm = MPIInit::instance();
     
-        //! \~russian Длина разрезаемого или собираемого массива.
+        //! \~russian Общее число обрабатываемых элементов. \details \~russian Длина разрезаемого или собираемого массива.
         int nElems_ { 0 };
-    
-        //! \~russian Режим работы узлов кластера
-        short mode_ { 0 };
-    
-        //! \~russsian 
-        int rankNode_ { 0 };
-    
-        //! \~russian 
-        int nNodes_ { 0 };
-    
-        //! \~russian 
-        std::vector<int> countsElemsPerNode_ { };
-    
-        //! \~russian
-        std::vector<int> displsElemsPerNode_ { };
-    
-        //! \~russian Длина вектора на узле.
+
+        //! \~russian Число элементов для  текущего узла. \details \~russian Длина массива для текущего узла, ранг которого определен переменной rankNode_.
         int nElemsPerNode_ { 0 };
     
-    public:
+        //! \~russian Режим работы узлов кластера. \detail \~russian Доступно 0 (нулевой узел управляющий) или 1 (все узлы выполняют вычисления).
+        short mode_ { 0 };
     
-        //! \~russian Конструктор.
-        MPIWorker() : rankNode_( comm.getRankNode() ), nNodes_( comm.getNNodes() )
+        //! \~russsian Ранг узла.
+        int rankNode_ { 0 };
+    
+        //! \~russian Число узлов.
+        int nNodes_ { 0 };
+    
+        //! \~russian Число элементов для каждого из узлов. \details \~russian Формат соответствует формату, принятому в MPI для коллективных операций типа Scatterv и Gatherv.
+        std::vector<int> countsElemsPerNode_ { };
+    
+        //! \~russian Смещения элементов в общем массиве для каждого из узлов.
+        std::vector<int> displsElemsPerNode_ { };
+
+        //! \~russian Выполняет расчет нагрузки для узлов.
+        void calculate()
         {
-            countsElemsPerNode_.resize( nNodes_ );
-            displsElemsPerNode_.resize( nNodes_ );
-        }
-    
-    
-        /*! \~russian Устанавливает режим работы узлов кластера. \details 
-         * \~russian Доступные режимы:
-         * \~russian * 0 - управляющий нулевой узел 
-         * \~russian * 1 - все узлы равноправны
-         */
-        void setMode( const short & mode ) { mode_ = mode; }
-    
-        //! \~russian Число элементов в разрезаемом или собираемом массиве.
-        void setNElems(const int & nElems)
-        {
-            nElems_ = nElems;
-    
             if( !rankNode_ )
             {
                 calculatePortions
@@ -246,13 +229,44 @@ namespace mpiworker
             nElemsPerNode_ = countsElemsPerNode_[rankNode_];
         }
     
+    public:
+    
+        //! \~russian Конструктор.
+        MPIWorker() : rankNode_( comm.getRankNode() ), nNodes_( comm.getNNodes() )
+        {
+            countsElemsPerNode_.resize( nNodes_ );
+            displsElemsPerNode_.resize( nNodes_ );
+        }
+    
+    
+        /*! \~russian Устанавливает режим работы узлов кластера. \details 
+         * \~russian Доступные режимы:
+         * \~russian * 0 - управляющий нулевой узел 
+         * \~russian * 1 - все узлы равноправны
+         */
+        void setMode( const short & mode ) 
+        { 
+            mode_ = mode; 
+            calculate();
+        }
+    
+        //! \~russian Число элементов в разрезаемом или собираемом массиве.
+        void setNElems(const int & nElems)
+        {
+            nElems_ = nElems;
+            calculate();
+        }
+    
+    
     
         //! \~russian Возвращает ранг узла.
         int getRankNode() const { return rankNode_; }
     
         //! \~russian Возвращает число узлов.
         int getNNodes() const { return nNodes_; }
-    
+   
+        //! \~russian Возвращает число элементов, которые должны быть обработаны на текущем узле
+        int getNElemsPerNode() const { return nElemsPerNode_; }
     
         //! \~russian Разделение элементов массива на приблизительно равные части. \details \~russian \param[in] array Исходный массив со всеми элементами. \param[out] arrayPerNode Выходной массив с элементами для текущего узла. \param[in] MPIType Тип элементов. 
         template <typename T>
@@ -362,6 +376,8 @@ namespace mpiworker
             std::cout << "\033[34;1m    nElems_\033[0;36;2m = " << nElems_ << "\033[0m" << std::endl;
     
             std::cout << "\033[34;1m    mode_\033[0;36;2m = " << mode_ << "\033[0m" << std::endl;
+
+            std::cout << "\033[34;1m    nElemsPerNode_\033[0;36;2m = " << nElemsPerNode_ << "\033[0m" << std::endl;
     
             std::cout << "\033[34;1m    countsElemsPerNode_\033[0;36;2m = ";
             std::copy
